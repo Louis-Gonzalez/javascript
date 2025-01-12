@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // const birthday = prompt('quel est votre année de naissance ?' );
+        // const anneeEnCours = new Date().getFullYear();
+        // const age = anneeEnCours - birthday; 
+        // if (age <=13) {
+        //     console.log('tu peux regarder Lilo & Stitch');
+        // } else if (age <=18 ) {
+        //     console.log('tu peux regarder Matrix');
+        // } else {
+        //     console.log('tu peux regarder Evil Dead');
+        // }
+
+        // const nombreDemande = prompt('quel est votre nombre ?');
+        // if (isNaN(nombreDemande)) {
+        //     console.log('ce n\'est pas un nombre');
+        // } else if(nombreDemande < 0 ||nombreDemande > 10) {
+        //     console.log('ce nombre n\'est pas entre 0 et 10');
+        // } else {
+        //     for (let i = nombreDemande; i >= 0; i--) {
+        //     console.log(i);
+        //     }
+        // }
+        
+        // let secretNumber = Math.floor(Math.random() * 101); // Nombre aléatoire entre 0 et 100
+        // let guess = prompt('Quel est le nombre secret ? (entre 0 et 100)');
+        // let nombresTentatives = 0;
+
+        // while (guess != secretNumber) {
+        //     if (guess < secretNumber) {
+        //         console.log('Plus grand');
+        //     } else if (guess > secretNumber) {
+        //         console.log('Plus petit');
+        //     }
+        //     nombresTentatives++;
+        //     guess = prompt('Quel est le nombre secret ? (entre 0 et 100)');
+        // }
+
+        // console.log(`Bravo, vous avez trouvé le nombre secret en ${nombresTentatives} tentatives !`);
+
+        // function isNbPremier(nb) 
+        // {
+        //     for (let i = 2; i < nb; i++) {
+        //         if (nb % i === 0) {
+        //             return false;
+        //         }
+        //     }
+        //     return true; 
+        // } 
+        // console.log(isNbPremier(2));
+        
+        // console.log("exo palindrome");
+
+        // let word = prompt('quel est votre mot ?');
+        // console.log(word);
+
+        // function isPalindrome(word) {
+        //     let reverseWord="";
+        //     word = word.toLowerCase();
+        //     for (let i = word.length - 1; i >= 0; i--) {
+        //         console.log(word[i]);
+        //         reverseWord = reverseWord + word[i];
+        //     }
+        //     if (word === reverseWord) {
+        //         return "C\'est un pallindromme";
+        //     } else {                
+        //         return "Ce n\'est pas un pallindromme";
+        //     }
+        // }
+        // console.log(isPalindrome(word));
+
+        // function isPalindrome(word) {
+        //     console.log(word);
+        //     const letters = word.split('');
+        //     letters.reverse();
+        //     const reserveWord = letters.join('');
+        //     console.log(reserveWord);
+        //     if (word.toUpperCase() === reserveWord.toUpperCase()) {
+        //         return "C\'est un pallindromme";
+        //     } else {                
+        //         return "Ce n\'est pas un pallindromme";
+        //     }
+        // }
+        // console.log(isPalindrome(prompt('quel est votre mot ?')));
+
+        // on peut factorisé
+        // function isPalindrome(word) {        
+        //     if (word.toUpperCase() === word.split('').reverse().join('').toUpperCase()) {
+        //         return "C\'est un pallindromme";
+        //     } else {                
+        //         return "Ce n\'est pas un pallindromme";
+        //     }
+        // }
+        // console.log(isPalindrome(prompt('quel est votre mot ?')));
+
+        // console.log("exo manupilation objet");
+        // // let listStudentsName = [];
+        // let top3Students = [];
+        // // let listStudentsAverage = [];
+        // let students= [
+        //     {
+        //         name: "John",
+        //         notes : [1,20,18,19,12],
+        //     },
+        //     {
+        //         name: "Jane",
+        //         notes : [17,18,20,13,15],
+        //     },
+        //     {
+        //         name: "Sophie",
+        //         notes : [17,12,14,15,13],
+        //     },
+        //     {
+        //         name: "Marc",
+        //         notes : [2,3,5,8,9],
+        //     },
+        //     {
+        //         name: "Manon",
+        //         notes : [8,17,18,19,12],
+        //     }
+        // ]
+        // function Average(array){
+        //     let sum = 0;
+        //     sum = array.reduce((a, b) => a + b, 0);
+        //     return sum / array.length;
+        // }
+
+        // const CompareStudent = (a, b) =>  {
+        //     return b.average - a.average
+        // }
+
+        // for (let student of students) {
+        //     student.average = Average(student.notes);
+        //     student.worstNote = Math.min(...student.notes);
+        //     student.bestNote = Math.max(...student.notes);
+        // }
+
+        // students.sort(CompareStudent);
+        // const formatStudent = (student) => {
+        //     console.log(`${student.name} a une moyenne de ${student.average}`);
+        // }
+        // console.log(students);
+        // console.log(`Top 3 des élèves : 
+        // 1: ${students[0].name} avec une moyenne de ${students[0].average}, (la plus mauvaise note est ${students[0].worstNote} et la meilleure ${students[0].bestNote})
+        // 2: ${students[1].name} avec une moyenne de ${students[1].average}, (la plus mauvaise note est ${students[1].worstNote} et la meilleure ${students[1].bestNote})
+        // 3: ${students[2].name} avec une moyenne de ${students[2].average}, (la plus mauvaise note est ${students[2].worstNote} et la meilleure ${students[2].bestNote})
+        // `);
+
+        console.log("occurance d'un mot");
+        const frenquencies = {}; 
+        const sentence = "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).";
+        let count = 0;
+        const futurKeys = sentence.toLowerCase().split(' ');
+
+        for (let futurKey of futurKeys) {
+            if (frenquencies[futurKey]) {
+                frenquencies[futurKey] += 1;
+            } else {
+                frenquencies[futurKey] = 1;
+            }
+        }
+        const frequenciesArray = [];
+        for (let key in frenquencies) {
+            frequenciesArray.push({
+                word : key,
+                count : frenquencies[key]
+            });
+        }
+
+        frequenciesArray.sort((a, b) => b.count - a.count);
+        console.log(`les mots qui apparaisent le plus sont 
+        "${frequenciesArray[0].word}" et ils apparaissent "${frequenciesArray[0].count}" fois, 
+        "${frequenciesArray[1].word}" et ils apparaissent "${frequenciesArray[1].count}" fois,
+        "${frequenciesArray[2].word}" et ils apparaissent "${frequenciesArray[2].count}" fois,`);
+        console.log(frequenciesArray);
+
+    </script> 
+</head>
+<body>
+    
+</body>
+</html>
