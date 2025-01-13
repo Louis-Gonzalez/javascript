@@ -151,33 +151,106 @@
         // 3: ${students[2].name} avec une moyenne de ${students[2].average}, (la plus mauvaise note est ${students[2].worstNote} et la meilleure ${students[2].bestNote})
         // `);
 
-        console.log("occurance d'un mot");
-        const frenquencies = {}; 
-        const sentence = "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).";
-        let count = 0;
-        const futurKeys = sentence.toLowerCase().split(' ');
+        // console.log("occurance d'un mot");
+        // const frenquencies = {}; 
+        // const sentence = "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).";
+        // let count = 0;
+        // const futurKeys = sentence.toLowerCase().split(' ');
 
-        for (let futurKey of futurKeys) {
-            if (frenquencies[futurKey]) {
-                frenquencies[futurKey] += 1;
-            } else {
-                frenquencies[futurKey] = 1;
+        // for (let futurKey of futurKeys) {
+        //     if (frenquencies[futurKey]) {
+        //         frenquencies[futurKey] += 1;
+        //     } else {
+        //         frenquencies[futurKey] = 1;
+        //     }
+        // }
+        // const frequenciesArray = [];
+        // for (let key in frenquencies) {
+        //     frequenciesArray.push({
+        //         word : key,
+        //         count : frenquencies[key]
+        //     });
+        // }
+
+        // frequenciesArray.sort((a, b) => b.count - a.count);
+        // console.log(`les mots qui apparaisent le plus sont 
+        // "${frequenciesArray[0].word}" et ils apparaissent "${frequenciesArray[0].count}" fois, 
+        // "${frequenciesArray[1].word}" et ils apparaissent "${frequenciesArray[1].count}" fois,
+        // "${frequenciesArray[2].word}" et ils apparaissent "${frequenciesArray[2].count}" fois,`);
+        // console.log(frequenciesArray);
+
+        //créer une class Rectangle initialisé avec largueur et une hauteur
+            // getter perimetter qui donne le perimètre du rectangle 
+            // getter isValid vérifier si la longueur est positive
+            // methode isBeggerThan disponible sur toutes les classes via l'héritage
+            //     en comparant la taille des périmètres
+        // créer une class Square via l'héritage 
+
+        class Rectangle {
+            constructor (width, height){
+                if (width > 0 && height >0){
+                    this.width = width;
+                    this.height = height;
+                } else {
+                    console.log("Rentrer des valeurs positifs.")
+                }
+            }
+
+            calculatePerimeter(){
+                return (this.width + this.height)*2
+            }
+
+            get perimeter(){
+                return this.calculatePerimeter();
+            }
+
+            get isValidRectangle(){
+                if (this.width > 0 && this.height > 0){
+                    return true
+                } else {
+                    return false
+                }
+            }
+
+            set name(string){
+                return this.name=string
+            }
+
+            isBiggerThan(shape) {
+                let perimeter1;
+                let perimeter2;
+                perimeter1 = this.perimeter;
+                perimeter2 = shape.perimeter;
+                if (perimeter1 > perimeter2) {
+                    return "La première figure est plus grande que la deuxième."
+                } else if(perimeter1 < perimeter2){
+                    return "La deuxième figure est plus grande que la première."
+                }else {
+                    return "Les figures sont de même taille."
+                }
             }
         }
-        const frequenciesArray = [];
-        for (let key in frenquencies) {
-            frequenciesArray.push({
-                word : key,
-                count : frenquencies[key]
-            });
-        }
 
-        frequenciesArray.sort((a, b) => b.count - a.count);
-        console.log(`les mots qui apparaisent le plus sont 
-        "${frequenciesArray[0].word}" et ils apparaissent "${frequenciesArray[0].count}" fois, 
-        "${frequenciesArray[1].word}" et ils apparaissent "${frequenciesArray[1].count}" fois,
-        "${frequenciesArray[2].word}" et ils apparaissent "${frequenciesArray[2].count}" fois,`);
-        console.log(frequenciesArray);
+        class Square extends Rectangle {
+            constructor (width){
+                super(width, width)
+            }
+        }
+        
+        const redRectangle = new Rectangle(100, 50);
+        const greenRectangle = new Rectangle(10,50);
+        const yellowSquare = new Square(20);
+
+        console.log("width :",redRectangle.width);
+        console.log("height :",redRectangle.height);
+        console.log("perimeter : ",redRectangle.perimeter)
+        console.log("isValid ?: ",redRectangle.isValidRectangle)
+        console.log("compare: ", greenRectangle.isBiggerThan(redRectangle))
+        console.log("width square :",yellowSquare.width);
+        console.log("height square :",yellowSquare.height);
+        console.log("perimeter square : ",yellowSquare.perimeter)
+
+
 
     </script> 
 </head>
