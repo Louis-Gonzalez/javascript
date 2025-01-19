@@ -186,72 +186,159 @@
             //     en comparant la taille des périmètres
         // créer une class Square via l'héritage 
 
-        class Rectangle {
-            constructor (width, height){
-                if (width > 0 && height >0){
-                    this.width = width;
-                    this.height = height;
-                } else {
-                    console.log("Rentrer des valeurs positifs.")
-                }
-            }
+        // class Rectangle {
+        //     constructor (width, height){
+        //         if (width > 0 && height >0){
+        //             this.width = width;
+        //             this.height = height;
+        //         } else {
+        //             console.log("Rentrer des valeurs positifs.")
+        //         }
+        //     }
 
-            calculatePerimeter(){
-                return (this.width + this.height)*2
-            }
+        //     calculatePerimeter(){
+        //         return (this.width + this.height)*2
+        //     }
 
-            get perimeter(){
-                return this.calculatePerimeter();
-            }
+        //     get perimeter(){
+        //         return this.calculatePerimeter();
+        //     }
 
-            get isValidRectangle(){
-                if (this.width > 0 && this.height > 0){
-                    return true
-                } else {
-                    return false
-                }
-            }
+        //     get isValidRectangle(){
+        //         if (this.width > 0 && this.height > 0){
+        //             return true
+        //         } else {
+        //             return false
+        //         }
+        //     }
 
-            set name(string){
-                return this.name=string
-            }
+        //     set name(string){
+        //         return this.name=string
+        //     }
 
-            isBiggerThan(shape) {
-                let perimeter1;
-                let perimeter2;
-                perimeter1 = this.perimeter;
-                perimeter2 = shape.perimeter;
-                if (perimeter1 > perimeter2) {
-                    return "La première figure est plus grande que la deuxième."
-                } else if(perimeter1 < perimeter2){
-                    return "La deuxième figure est plus grande que la première."
-                }else {
-                    return "Les figures sont de même taille."
-                }
-            }
+        //     isBiggerThan(shape) {
+        //         let perimeter1;
+        //         let perimeter2;
+        //         perimeter1 = this.perimeter;
+        //         perimeter2 = shape.perimeter;
+        //         if (perimeter1 > perimeter2) {
+        //             return "La première figure est plus grande que la deuxième."
+        //         } else if(perimeter1 < perimeter2){
+        //             return "La deuxième figure est plus grande que la première."
+        //         }else {
+        //             return "Les figures sont de même taille."
+        //         }
+        //     }
+        // }
+
+        // class Square extends Rectangle {
+        //     constructor (width){
+        //         super(width, width)
+        //     }
+        // }
+        
+        // const redRectangle = new Rectangle(100, 50);
+        // const greenRectangle = new Rectangle(10,50);
+        // const yellowSquare = new Square(20);
+
+        // console.log("width :",redRectangle.width);
+        // console.log("height :",redRectangle.height);
+        // console.log("perimeter : ",redRectangle.perimeter)
+        // console.log("isValid ?: ",redRectangle.isValidRectangle)
+        // console.log("compare: ", greenRectangle.isBiggerThan(redRectangle))
+        // console.log("width square :",yellowSquare.width);
+        // console.log("height square :",yellowSquare.height);
+        // console.log("perimeter square : ",yellowSquare.perimeter)
+
+        //////////////////////////// setinterval /////////////////////////
+
+        // let i =0;
+        // const t = setInterval(()=> {
+        //     i++;
+        //     console.log('bonjour');
+        //     if (i >=5){
+        //         clearInterval(t)
+        //     }
+        // }, 1000);
+
+        // function decompte(tpsRestant) {
+        //     console.log(tpsRestant);
+        //     const interval = setInterval(() => {
+        //         tpsRestant--;
+        //         console.log(tpsRestant);
+        //         if (tpsRestant === 0){
+        //             clearInterval(interval);
+        //         }
+        //     }, 1000);
+        // }
+
+        // equivalent 
+        // function decompte(tpsRestant){
+        //     console.log(tpsRestant);
+        //     if (tpsRestant === 0){
+        //         return
+        //     }
+        //     setTimeout(() => {
+        //         decompte(tpsRestant -1);
+        //     }, 1000);
+        // }
+        // decompte (5);
+        
+
+        //////////////////// promise ///////////////////////
+        // const p = new Promise((resolve, reject) => {
+        //     reject(4) // resolve(4) refusé ou accepter
+        // })
+
+        // p
+        //     .then((result) => {
+        //         console.log("Le nombre est :", result);
+        //     })
+        //     .then((result) =>{
+        //         console.log("Le nombre est maintenant 3")
+        //     })
+        //     .catch((err) => {
+        //         console.log("la promise a été rejeté :", err)
+        //     })
+        //     .finally(() => console.log("Process terminé")); // sera exécuter quoi qu'il arrive 
+        
+        function wait (duration) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(duration)
+                }, duration);
+            })
         }
 
-        class Square extends Rectangle {
-            constructor (width){
-                super(width, width)
-            }
+        function waitAndFail (duration) {
+            return new Promise((resolve, reject) => {
+                reject(duration )
+            })
         }
         
-        const redRectangle = new Rectangle(100, 50);
-        const greenRectangle = new Rectangle(10,50);
-        const yellowSquare = new Square(20);
+        wait(2000)
+            .then(() => {
+                console.log("Attente 2s")
+                return wait(1000)
+            })
+            .then(()=>{
+                console.log("Attente 1s")
+                return waitAndFail(2000)
+            })
+            .catch((err) => {
+                console.log("la promise a été rejeté :", err)
+            })
+            .finally(() => console.log("Process terminé"));
 
-        console.log("width :",redRectangle.width);
-        console.log("height :",redRectangle.height);
-        console.log("perimeter : ",redRectangle.perimeter)
-        console.log("isValid ?: ",redRectangle.isValidRectangle)
-        console.log("compare: ", greenRectangle.isBiggerThan(redRectangle))
-        console.log("width square :",yellowSquare.width);
-        console.log("height square :",yellowSquare.height);
-        console.log("perimeter square : ",yellowSquare.perimeter)
+        async function main(){
+            const time = await wait(2000);
+            console.log(time);
+        }
+        main();
 
-
-
+        Promise.all([wait(1000), wait(2000)])
+            .then(console.log)
+            .catch(console.log);
     </script> 
 </head>
 <body>
